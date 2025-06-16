@@ -9,9 +9,7 @@ services:
     name: mel-app
     env: docker # Le decimos a Render que use nuestro Dockerfile
     plan: free
-    # Comando para iniciar el servidor de Rails en producción
-    startCommand: "bundle exec rails server"
-    # Variables de entorno necesarias para Rails y la conexión a la BD
+    # Ya no necesitamos startCommand porque Render usará el CMD del Dockerfile
     envVars:
       - key: RAILS_MASTER_KEY
         generateValue: true # Render genera una clave segura por nosotros
@@ -20,3 +18,4 @@ services:
         fromDatabase:
           name: mel-database # El nombre del servicio de BD de arriba
           property: connectionString
+
