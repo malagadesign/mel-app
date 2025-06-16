@@ -1,17 +1,22 @@
 services:
+  # 1. El servicio de la base de datos PostgreSQL
   - type: pserv
     name: mel-database
+    # Render se encarga de la versión y el plan 'free' para la base de datos.
 
+  # 2. El servicio de la aplicación web
   - type: web
     name: mel-app
     env: docker # Le decimos a Render que use nuestro Dockerfile
     plan: free
+    # Comando para iniciar el servidor de Rails en producción
+    startCommand: "bundle exec rails server"
     # Variables de entorno necesarias para Rails y la conexión a la BD
     envVars:
       - key: RAILS_MASTER_KEY
         generateValue: true # Render genera una clave segura por nosotros
-   
+      # Aquí es donde se establece la conexión a la base de datos:
       - key: DATABASE_URL
         fromDatabase:
-          name: mel-database 
+          name: mel-database # El nombre del servicio de BD de arriba
           property: connectionString
