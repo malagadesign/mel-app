@@ -1,0 +1,25 @@
+services:
+  # El servicio de la base de datos PostgreSQL
+  - type: pserv
+    name: mel-database
+    env: docker
+    plan: free
+
+  # El servicio de la aplicación web
+  - type: web
+    name: mel-app
+    env: docker
+    plan: free
+    # Apunta a la base de datos que creamos arriba
+    database:
+      name: mel-database
+      username: mel_database_user
+    # Variables de entorno necesarias para Rails
+    envVars:
+      - key: RAILS_MASTER_KEY
+        generateValue: true # Render generará una clave segura por nosotros
+      - fromDatabase:
+          key: DATABASE_URL
+          database:
+            name: mel-database
+            property: connectionString
