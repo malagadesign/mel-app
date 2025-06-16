@@ -1,4 +1,3 @@
-# Usamos la imagen oficial de Ruby 3.3.2 como base
 FROM ruby:3.3.2
 
 # --- Instalación de Node.js desde NodeSource (el método robusto) ---
