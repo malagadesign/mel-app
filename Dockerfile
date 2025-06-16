@@ -35,8 +35,13 @@ RUN bundle install
 # Copiamos el resto del código de nuestra aplicación
 COPY . .
 
+# --- AÑADIMOS LA LÓGICA PARA RENDER ---
+# Copiamos nuestro nuevo script de inicio y lo hacemos ejecutable
+COPY bin/render-start.sh ./bin/
+RUN chmod +x ./bin/render-start.sh
+
 # Exponemos el puerto
 EXPOSE 3000
 
-# El comando de inicio por defecto
-CMD ["./bin/dev"]
+# El comando de inicio ahora es nuestro script personalizado para producción
+CMD ["./bin/render-start.sh"]
