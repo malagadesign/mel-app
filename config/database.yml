@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: db
+  username: postgres
+  password: password
+
+development:
+  <<: *default
+  database: mi_maqueta_docker_development
+
+test:
+  <<: *default
+  database: mi_maqueta_docker_test

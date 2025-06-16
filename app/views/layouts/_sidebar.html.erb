@@ -1,0 +1,101 @@
+<aside 
+  x-data="{ expanded: false, openSubmenu: '' }" 
+  class="flex flex-col text-white transition-all duration-300 ease-in-out"
+  :class="expanded ? 'w-64' : 'w-20'"
+  style="background-color: #043e22;"
+>
+
+  <!-- Logo -->
+  <div class="h-20 flex items-center justify-center shrink-0" style="background-color: #81b829;">
+    <a href="/" class="overflow-hidden">
+      <h1 class="font-bold text-2xl text-brand-dark" :class="expanded ? 'block' : 'hidden'">
+        Mel<span class="font-light text-sm align-top">INMOBILIARIO</span>
+      </h1>
+      <h1 class="font-bold text-2xl text-brand-dark" :class="expanded ? 'hidden' : 'block'">
+        M<span class="font-light text-sm align-top">IN</span>
+      </h1>
+    </a>
+  </div>
+
+  <!-- Items del Menú -->
+  <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+    <a href="#" class="flex items-center p-2 rounded-lg hover:bg-brand-medium">
+      <i data-lucide="home" class="w-6 h-6 shrink-0"></i>
+      <span class="ml-4 transition-opacity whitespace-nowrap" :class="expanded ? 'opacity-100' : 'opacity-0'">Inicio</span>
+    </a>
+    
+    <a href="#" class="flex items-center p-2 rounded-lg hover:bg-brand-medium">
+      <i data-lucide="concierge-bell" class="w-6 h-6 shrink-0"></i>
+      <span class="ml-4 transition-opacity whitespace-nowrap" :class="expanded ? 'opacity-100' : 'opacity-0'">Recepción</span>
+    </a>
+
+    <a href="#" class="flex items-center p-2 rounded-lg" style="background-color: #1a4f35;">
+      <i data-lucide="user" class="w-6 h-6 shrink-0"></i>
+      <span class="ml-4 transition-opacity whitespace-nowrap" :class="expanded ? 'opacity-100' : 'opacity-0'">Clientes</span>
+    </a>
+
+    <!-- Menú Desplegable: Unidades -->
+    <div x-data="{ open: openSubmenu === 'unidades' }">
+      <button @click="openSubmenu = (openSubmenu === 'unidades' ? '' : 'unidades')" class="w-full flex items-center p-2 rounded-lg hover:bg-brand-medium justify-between">
+        <div class="flex items-center overflow-hidden">
+          <i data-lucide="building-2" class="w-6 h-6 shrink-0"></i>
+          <span class="ml-4 transition-opacity whitespace-nowrap" :class="expanded ? 'opacity-100' : 'opacity-0'">Unidades</span>
+        </div>
+        <i data-lucide="chevron-down" class="w-4 h-4 shrink-0 transition-all duration-300" :class="{ 'rotate-180': openSubmenu === 'unidades', 'opacity-0': !expanded }"></i>
+      </button>
+      <div x-show="expanded && openSubmenu === 'unidades'" x-transition class="mt-1 ml-6 pl-4 border-l border-brand-medium space-y-1">
+        <a href="#" class="block p-2 text-sm rounded-lg hover:bg-brand-medium">Listado</a>
+        <a href="#" class="block p-2 text-sm rounded-lg hover:bg-brand-medium">Crear Unidad</a>
+        <a href="#" class="block p-2 text-sm rounded-lg hover:bg-brand-medium">Tipos de Unidades</a>
+      </div>
+    </div>
+    
+    <a href="#" class="flex items-center p-2 rounded-lg hover:bg-brand-medium">
+      <i data-lucide="sliders-horizontal" class="w-6 h-6 shrink-0"></i>
+      <span class="ml-4 transition-opacity whitespace-nowrap" :class="expanded ? 'opacity-100' : 'opacity-0'">Atributos de unidades</span>
+    </a>
+    
+    <a href="#" class="flex items-center p-2 rounded-lg hover:bg-brand-medium">
+      <i data-lucide="file-text" class="w-6 h-6 shrink-0"></i>
+      <span class="ml-4 transition-opacity whitespace-nowrap" :class="expanded ? 'opacity-100' : 'opacity-0'">Tasaciones</span>
+    </a>
+
+    <a href="#" class="flex items-center p-2 rounded-lg hover:bg-brand-medium">
+      <i data-lucide="handshake" class="w-6 h-6 shrink-0"></i>
+      <span class="ml-4 transition-opacity whitespace-nowrap" :class="expanded ? 'opacity-100' : 'opacity-0'">Transacciones</span>
+    </a>
+
+    <!-- Menú Desplegable: Master obras -->
+     <div x-data="{ open: openSubmenu === 'obras' }">
+      <button @click="openSubmenu = (openSubmenu === 'obras' ? '' : 'obras')" class="w-full flex items-center p-2 rounded-lg hover:bg-brand-medium justify-between">
+        <div class="flex items-center overflow-hidden">
+          <i data-lucide="hard-hat" class="w-6 h-6 shrink-0"></i>
+          <span class="ml-4 transition-opacity whitespace-nowrap" :class="expanded ? 'opacity-100' : 'opacity-0'">Master obras</span>
+        </div>
+        <i data-lucide="chevron-down" class="w-4 h-4 shrink-0 transition-all duration-300" :class="{ 'rotate-180': openSubmenu === 'obras', 'opacity-0': !expanded }"></i>
+      </button>
+      <div x-show="expanded && openSubmenu === 'obras'" x-transition class="mt-1 ml-6 pl-4 border-l border-brand-medium space-y-1">
+        <a href="#" class="block p-2 text-sm rounded-lg hover:bg-brand-medium">Listado de Obras</a>
+        <a href="#" class="block p-2 text-sm rounded-lg hover:bg-brand-medium">Crear Obra</a>
+      </div>
+    </div>
+
+    <a href="#" class="flex items-center p-2 rounded-lg hover:bg-brand-medium">
+      <i data-lucide="image" class="w-6 h-6 shrink-0"></i>
+      <span class="ml-4 transition-opacity whitespace-nowrap" :class="expanded ? 'opacity-100' : 'opacity-0'">Media</span>
+    </a>
+
+    <a href="#" class="flex items-center p-2 rounded-lg hover:bg-brand-medium">
+      <i data-lucide="settings" class="w-6 h-6 shrink-0"></i>
+      <span class="ml-4 transition-opacity whitespace-nowrap" :class="expanded ? 'opacity-100' : 'opacity-0'">Parámetros</span>
+    </a>
+
+  </nav>
+
+  <!-- Botón para expandir/contraer -->
+  <div class="px-4 py-4 border-t border-brand-medium">
+    <button @click="expanded = !expanded" class="flex items-center justify-center p-2 rounded-lg w-full hover:bg-brand-medium">
+      <i data-lucide="chevrons-right-left" class="w-6 h-6"></i>
+    </button>
+  </div>
+</aside>

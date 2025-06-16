@@ -1,0 +1,364 @@
+<main class="bg-background min-h-screen p-4 sm:p-6 lg:p-8 font-sans">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Encabezado de la página -->
+    <div class="mb-6">
+      <nav class="text-sm mb-2" aria-label="Breadcrumb">
+        <ol class="list-none p-0 inline-flex">
+          <li class="flex items-center">
+            <a href="#" class="text-gray-500 hover:text-gray-700">Clientes</a>
+          </li>
+          <li class="flex items-center mx-2">
+            <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            </svg>
+          </li>
+          <li class="flex items-center">
+            <span class="text-gray-800 font-semibold">Nuevo cliente</span>
+          </li>
+        </ol>
+      </nav>
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900">Clientes</h1>
+          <p class="text-gray-600 mt-1">Gestión y administración.</p>
+        </div>
+        <div class="flex space-x-2 mt-4 sm:mt-0">
+          <button class="flex items-center bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50">
+            <!-- Icono de Importar -->
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+            Importar clientes
+          </button>
+          <button class="flex items-center bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50">
+            <!-- Icono de Agregar -->
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+            Agregar cliente
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mensaje de Error (oculto por defecto) -->
+    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-lg mb-6 hidden" role="alert">
+      <div class="flex">
+        <div class="py-1">
+          <!-- Icono de Error -->
+          <svg class="w-6 h-6 text-red-500 mr-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+        </div>
+        <div>
+          <p class="font-bold">Error al guardar</p>
+          <p class="text-sm">Verifique los campos resaltados y vuelva a intentarlo.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido Principal: Formulario y Acciones -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Columna del Formulario (ocupa 2 de 3 columnas en pantallas grandes) -->
+      <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+        <h2 class="text-lg font-semibold text-gray-900 mb-6 border-b border-gray-200 pb-4">Nuevo cliente</h2>
+        <form class="space-y-6">
+          
+          <!-- Fila: ID, Nombre, Apellido -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div>
+              <label for="client-id" class="block text-sm font-medium text-gray-700">ID</label>
+              <input type="text" id="client-id" value="E000023" disabled class="py-2.5 px-3 mt-1 block w-full bg-gray-100 border-gray-300 rounded-md shadow-sm text-gray-500 cursor-not-allowed">
+            </div>
+            <div>
+              <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre <span class="text-red-500">*</span></label>
+              <input type="text" id="nombre" placeholder="Nombre" class="py-2.5 px-3 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary">
+            </div>
+            <div>
+              <label for="apellido" class="block text-sm font-medium text-gray-700">Apellido <span class="text-red-500">*</span></label>
+              <input type="text" id="apellido" placeholder="Apellido" class="py-2.5 px-3 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary">
+            </div>
+          </div>
+
+          <!-- Fila: Email -->
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email <span class="text-red-500">*</span></label>
+            <div class="mt-1 flex rounded-md shadow-sm">
+              <select class="bg-brand-primary/10 py-2.5 px-3 rounded-l-md border-r-0 border-gray-300 focus:ring-brand-primary focus:border-brand-primary">
+                <option>Personal</option>
+                <option>Laboral</option>
+              </select>
+              <div class="relative flex-grow">
+                <input type="email" id="email" placeholder="Ingresar..." class="py-2.5 px-3 block w-full rounded-r-md border-gray-300 focus:ring-brand-primary focus:border-brand-primary">
+                <div class="absolute inset-y-0 right-0 pr-3 flex items-center space-x-2">
+                  <button type="button" class="text-gray-400 hover:text-brand-primary text-lg font-bold">+</button>
+                  <button type="button" class="text-gray-400 hover:text-red-500 text-lg font-bold">-</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fila: Teléfono (unificado) -->
+          <div>
+            <label for="telefono" class="block text-sm font-medium text-gray-700">Teléfono <span class="text-red-500">*</span></label>
+            <div class="mt-1 flex rounded-md shadow-sm">
+               <select class="bg-brand-primary/10 py-2.5 px-3 rounded-l-md border-r-0 border-gray-300 focus:ring-brand-primary focus:border-brand-primary">
+                  <option>Laboral</option>
+                  <option>Personal</option>
+                </select>
+                <div class="relative flex-grow">
+                   <input type="text" id="telefono" placeholder="Ingresar..." class="py-2.5 px-3 block w-full rounded-r-md border-gray-300 focus:ring-brand-primary focus:border-brand-primary">
+                   <div class="absolute inset-y-0 right-0 pr-3 flex items-center space-x-2">
+                    <button type="button" class="text-gray-400 hover:text-brand-primary text-lg font-bold">+</button>
+                    <button type="button" class="text-gray-400 hover:text-red-500 text-lg font-bold">-</button>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <!-- Fila: Dirección Laboral -->
+          <div>
+            <label for="direccion-laboral" class="block text-sm font-medium text-gray-700">Dirección laboral <span class="text-red-500">*</span></label>
+            <div class="mt-1 grid grid-cols-1 sm:grid-cols-12 gap-4">
+              <div class="sm:col-span-6">
+                <input type="text" id="direccion-laboral" placeholder="Ingresar..." class="py-2.5 px-3 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary">
+              </div>
+              <div class="sm:col-span-2">
+                <input type="text" placeholder="Nro" class="py-2.5 px-3 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary">
+              </div>
+              <div class="sm:col-span-2">
+                <input type="text" placeholder="Piso" class="py-2.5 px-3 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary">
+              </div>
+              <div class="sm:col-span-2">
+                <input type="text" placeholder="Dpto" class="py-2.5 px-3 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Fila: Selects País, Provincia, Ciudad (para dirección laboral) -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700">País <span class="text-red-500">*</span></label>
+              <select class="py-2.5 px-3 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary">
+                <option>Seleccionar</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Provincia <span class="text-red-500">*</span></label>
+              <select class="py-2.5 px-3 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary">
+                <option>Seleccionar</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Ciudad <span class="text-red-500">*</span></label>
+              <select class="py-2.5 px-3 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary">
+                <option>Seleccionar</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Fila: Dirección Personal -->
+          <div>
+            <label for="direccion-personal" class="block text-sm font-medium text-gray-700">Dirección personal <span class="text-red-500">*</span></label>
+            <div class="mt-1 grid grid-cols-1 sm:grid-cols-12 gap-4">
+              <div class="sm:col-span-6"><input type="text" placeholder="Ingresar..." class="py-2.5 px-3 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary"></div>
+              <div class="sm:col-span-2"><input type="text" placeholder="Nro" class="py-2.5 px-3 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary"></div>
+              <div class="sm:col-span-2"><input type="text" placeholder="Piso" class="py-2.5 px-3 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary"></div>
+              <div class="sm:col-span-2"><input type="text" placeholder="Dpto" class="py-2.5 px-3 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary"></div>
+            </div>
+          </div>
+          
+           <!-- Fila: Selects País, Provincia, Ciudad (para dirección personal) -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700">País <span class="text-red-500">*</span></label>
+              <select class="py-2.5 px-3 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary"><option>Seleccionar</option></select>
+            </div>
+            <div>
+               <label class="block text-sm font-medium text-gray-700">Provincia <span class="text-red-500">*</span></label>
+              <select class="py-2.5 px-3 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary"><option>Seleccionar</option></select>
+            </div>
+            <div>
+               <label class="block text-sm font-medium text-gray-700">Ciudad <span class="text-red-500">*</span></label>
+              <select class="py-2.5 px-3 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary"><option>Seleccionar</option></select>
+            </div>
+          </div>
+          
+          <!-- Fila: Etiquetas Interactivas -->
+          <div x-data="{ tags: ['2 AMB', '3 AMB'], newTag: '' }">
+            <label class="block text-sm font-medium text-gray-700">Etiquetas <span class="text-red-500">*</span></label>
+            <div @click="$refs.input.focus()" class="mt-1 flex items-center flex-wrap gap-2 p-2 border border-gray-300 rounded-md shadow-sm">
+              <template x-for="(tag, index) in tags" :key="index">
+                <span class="bg-brand-primary/20 text-brand-dark text-xs font-semibold px-2.5 py-1 rounded-full flex items-center">
+                  <span x-text="tag"></span>
+                  <button @click.stop="tags.splice(index, 1)" type="button" class="ml-1.5 text-brand-medium hover:text-brand-dark font-bold">&times;</button>
+                </span>
+              </template>
+              <input 
+                x-ref="input"
+                x-model="newTag" 
+                @keydown.enter.prevent="if (newTag.trim() !== '') tags.push(newTag.trim()); newTag = ''" 
+                @keydown.backspace="if (newTag === '' && tags.length > 0) tags.pop()"
+                type="text" 
+                class="py-2.5 px-3 flex-grow border-none p-0 focus:ring-0 text-sm" 
+                placeholder="Añadir etiqueta...">
+            </div>
+          </div>
+
+          <!-- Fila: Empresa, Referido, Oficina/Agente -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Empresa</label>
+              <input type="text" placeholder="Ingresar..." class="py-2.5 px-3 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Referido</label>
+              <input type="text" placeholder="Ingresar..." class="py-2.5 px-3 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Oficinal/Agente comercial <span class="text-red-500">*</span></label>
+              <select class="py-2.5 px-3 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary">
+                <option>Seleccionar</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Fila: Observaciones -->
+          <div>
+            <label for="observaciones" class="block text-sm font-medium text-gray-700">Observaciones</label>
+            <textarea id="observaciones" rows="4" class="py-2.5 px-3 mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-brand-primary focus:border-brand-primary"></textarea>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Columna de Acciones -->
+      <div class="lg:col-span-1 space-y-8">
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 sticky top-8">
+          <h2 class="text-lg font-semibold text-gray-900 mb-6">Acciones</h2>
+          <div class="space-y-4">
+            
+            <!-- Toggle -->
+            <div class="flex justify-between items-center">
+              <span class="font-medium text-gray-700">Activo</span>
+              <label for="toggle" class="inline-flex relative items-center cursor-pointer">
+                <input type="checkbox" id="toggle" class="sr-only peer" checked>
+                <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-brand-primary/50 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-primary"></div>
+              </label>
+            </div>
+
+            <!-- Botones -->
+            <div class="pt-4 border-t border-gray-200">
+              <div class="flex flex-col space-y-3">
+                 <button class="w-full bg-brand-primary text-white px-4 py-2 rounded-lg font-medium hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary flex items-center justify-center">
+                    <!-- Icono 'Guardar' -->
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>
+                    Guardar
+                </button>
+                <button class="w-full bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50">Guardar y salir</button>
+                <button class="w-full bg-red-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-700">Cancelar</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        
+        <!-- Módulo Tipo de cliente (con interactividad Alpine.js) -->
+        <div x-data="{ necesitaVender: 'no', reservado: 'no' }" class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+          <h2 class="text-lg font-semibold text-gray-900 mb-6">Tipo de cliente</h2>
+          <div class="space-y-4">
+            
+            <!-- Pregunta: Necesita vender -->
+            <div>
+              <span class="font-medium text-gray-700">Necesita vender</span>
+              <fieldset class="mt-2">
+                <div class="flex space-x-4">
+                  <label class="flex items-center">
+                    <input x-model="necesitaVender" type="radio" name="necesita-vender" value="si" class="h-4 w-4 text-brand-primary border-gray-300 focus:ring-brand-primary">
+                    <span class="ml-2 text-sm text-gray-700">SI</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input x-model="necesitaVender" type="radio" name="necesita-vender" value="no" class="h-4 w-4 text-brand-primary border-gray-300 focus:ring-brand-primary" checked>
+                    <span class="ml-2 text-sm text-gray-700">NO</span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+
+            <!-- Opciones condicionales -->
+            <div x-show="necesitaVender === 'si'" x-transition class="space-y-4 pt-4 border-t border-gray-200">
+              <!-- Pregunta: Reservado -->
+              <div>
+                <span class="font-medium text-gray-700">Reservado</span>
+                 <fieldset class="mt-2">
+                  <div class="flex space-x-4">
+                    <label class="flex items-center">
+                      <input x-model="reservado" type="radio" name="reservado" value="si" class="h-4 w-4 text-brand-primary border-gray-300 focus:ring-brand-primary">
+                      <span class="ml-2 text-sm text-gray-700">SI</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input x-model="reservado" type="radio" name="reservado" value="no" class="h-4 w-4 text-brand-primary border-gray-300 focus:ring-brand-primary" checked>
+                      <span class="ml-2 text-sm text-gray-700">NO</span>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+
+              <!-- Pregunta: Encadenada (depende de 'reservado') -->
+              <div x-show="reservado === 'si'" x-transition>
+                <span class="font-medium text-gray-700">Encadenada</span>
+                 <fieldset class="mt-2">
+                  <div class="flex space-x-4">
+                    <label class="flex items-center">
+                      <input type="radio" name="encadenada" value="si" class="h-4 w-4 text-brand-primary border-gray-300 focus:ring-brand-primary">
+                      <span class="ml-2 text-sm text-gray-700">SI</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="encadenada" value="no" class="h-4 w-4 text-brand-primary border-gray-300 focus:ring-brand-primary" checked>
+                      <span class="ml-2 text-sm text-gray-700">NO</span>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+            
+            <!-- Nuevas Preguntas -->
+            <div class="pt-4 border-t border-gray-200 space-y-4">
+              <!-- Pregunta: Crédito Hipotecario -->
+              <div>
+                <span class="font-medium text-gray-700">Crédito Hipotecario</span>
+                 <fieldset class="mt-2">
+                  <div class="flex space-x-4">
+                    <label class="flex items-center">
+                      <input type="radio" name="credito" value="si" class="h-4 w-4 text-brand-primary border-gray-300 focus:ring-brand-primary">
+                      <span class="ml-2 text-sm text-gray-700">SI</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="credito" value="no" class="h-4 w-4 text-brand-primary border-gray-300 focus:ring-brand-primary" checked>
+                      <span class="ml-2 text-sm text-gray-700">NO</span>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+              
+              <!-- Pregunta: Dispone de efectivo -->
+               <div>
+                <span class="font-medium text-gray-700">Dispone de efectivo (compra inmediata)</span>
+                 <fieldset class="mt-2">
+                  <div class="flex space-x-4">
+                    <label class="flex items-center">
+                      <input type="radio" name="efectivo" value="si" class="h-4 w-4 text-brand-primary border-gray-300 focus:ring-brand-primary">
+                      <span class="ml-2 text-sm text-gray-700">SI</span>
+                    </label>
+                    <label class="flex items-center">
+                      <input type="radio" name="efectivo" value="no" class="h-4 w-4 text-brand-primary border-gray-300 focus:ring-brand-primary" checked>
+                      <span class="ml-2 text-sm text-gray-700">NO</span>
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</main>
