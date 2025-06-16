@@ -1,13 +1,16 @@
 databases:
   - name: mel-database
-    plan: free # El plan gratuito de Render para Postgres
+    plan: free
 
 services:
   - type: web
     name: mel-app
     plan: free
-    env: docker # Le decimos a Render que use nuestro Dockerfile
-    # No se necesita 'startCommand' porque Render usará el 'CMD' de tu Dockerfile.
+    env: docker
+    # --- ¡AQUÍ ESTÁ LA SOLUCIÓN! ---
+    # Le decimos a Render explícitamente qué puerto debe revisar.
+    healthCheckPath: /up # Usa la ruta de chequeo de Rails
+    # ---------------------------------
     envVars:
       - key: DATABASE_URL
         fromDatabase:
